@@ -3,11 +3,16 @@
 
 SECTION .text	;
 
-mov ax, 0XB800	;
-mov ds, ax	;
+jmp 0x07C0:START	;
 
-mov byte [ 0x00 ], 'M'	;
-mov byte [ 0x01 ], 0x4A	;
+START:
+	mov ax, 0x07C0	;
+	mov ds, ax	;
+	mov ax, 0XB800	;
+	mov es, ax	;
+
+mov byte [ es:0x00 ], 'M'	;
+mov byte [ es:0x01 ], 0x4A	;
 
 jmp $	;
 
